@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - 5000:5000
+    environment:
+      MONGO_URI: mongodb://db/todo-without-auth
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - todo-list:/data/db
+volumes:
+  todo-list:
